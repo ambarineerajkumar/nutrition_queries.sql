@@ -116,3 +116,17 @@ SELECT foodandserving, calories, TOTALCARBOHYDRATE2, sugars, (calories / TOTALCA
 FROM cp
 WHERE sugars < 10
 ORDER BY calories_to_carbs_ratio ASC FETCH FIRST 1 ROWS ONLY;
+
+# Report
+
+✅ Structured Schema – Contains nutritional details like calories, fat, protein, vitamins, and minerals.
+
+✅ Categorized Data – Foods are classified into types (e.g., Meat, Vegetables, Fruits, Grains, Fish).
+
+✅ Efficient Querying – Users can filter and analyze data based on nutritional values.
+
+✅ Scalability – The dataset can be expanded with more food items and additional attributes.
+
+# Conclusion
+
+The Food Nutrition Database is a comprehensive, structured, and scalable solution for storing and analyzing food-related nutritional data. It provides a foundation for diet tracking applications, health monitoring systems, and research studies. By integrating with machine learning models, this database can further enhance predictive analysis of dietary trends.
