@@ -4,6 +4,10 @@
 📌 Project Name: Food Nutrition analysis
 
 📌 Dateset Name:Food Nutrition Dataset 
+# ![dataset-cover](https://github.com/user-attachments/assets/e5a24863-7dfc-46c1-8234-60d88193a4fa)
+
+
+
 # Introduction
 The Food Nutrition Database project aims to store and analyze the nutritional composition of various food items using Oracle SQL. The dataset includes attributes such as calories, fats, proteins, vitamins, minerals, and food type classifications. This database serves as a valuable resource for health applications, dietary tracking, and nutritional research.
 
@@ -18,7 +22,7 @@ The Food Nutrition Database project aims to store and analyze the nutritional co
 🔹 Provide insights into healthier eating patterns.
 
 # Create Dataset As NutritionalFacts_Fruit_Vegetables_Seafood dataset 
-.sql
+...sql
 CREATE TABLE food_nutrition (
     food_name VARCHAR2(255),
     calories NUMBER,
@@ -43,7 +47,9 @@ CREATE TABLE food_nutrition (
     saturated_fat_percentage NUMBER,
     cholesterol NUMBER,
     cholesterol_percentage NUMBER,
-    food_type VARCHAR2(100));.
+    food_type VARCHAR2(100)
+    );
+    ...
     
 
 --1. Retrieve the food items with the highest calorie content per serving.
