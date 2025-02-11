@@ -21,35 +21,60 @@ The Food Nutrition Database project aims to store and analyze the nutritional co
 
 🔹 Provide insights into healthier eating patterns.
 
-# Create Dataset As NutritionalFacts_Fruit_Vegetables_Seafood dataset 
-...sql
+# Create Dataset As NutritionalFacts_Fruit_Vegetables_Seafood dataset
+
 CREATE TABLE food_nutrition (
+   
     food_name VARCHAR2(255),
+    
     calories NUMBER,
+    
     calories_from_fat NUMBER,
+    
+    
     total_fat NUMBER,
+    
     total_fat_percentage NUMBER,
+    
     sodium NUMBER,
+    
     sodium_percentage NUMBER,
+    
     potassium NUMBER,
+    
     potassium_percentage NUMBER,
+    
     total_carbohydrate NUMBER,
+    
     total_carbohydrate_percentage NUMBER,
+    
     dietary_fiber NUMBER,
+    
     dietary_fiber_percentage NUMBER,
+    
     sugars NUMBER,
+    
     protein NUMBER,
+    
     vitamin_a NUMBER,
+    
     vitamin_c NUMBER,
+    
     calcium NUMBER,
+    
     iron NUMBER,
+    
     saturated_fat NUMBER,
+    
     saturated_fat_percentage NUMBER,
+    
     cholesterol NUMBER,
+    
     cholesterol_percentage NUMBER,
+    
     food_type VARCHAR2(100)
-    );
-    ...
+ );
+
     
 
 --1. Retrieve the food items with the highest calorie content per serving.
