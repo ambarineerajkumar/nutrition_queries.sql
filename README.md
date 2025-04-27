@@ -20,7 +20,7 @@ The Food Nutrition Database project aims to store and analyze the nutritional co
 🔹 Support research on food nutrition and dietary habits.
 
 🔹 Provide insights into healthier eating patterns.
-Certainly! Here is the converted SQL code wrapped in Markdown code blocks for GitHub:
+Certainly! Here is the converted SQL code wrapped in Markdown code blocks for GitHub
 
 ```sql
 # Create Dataset As NutritionalFacts_Fruit_Vegetables_Seafood dataset
