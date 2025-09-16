@@ -1,0 +1,143 @@
+# Create Dataset As NutritionalFacts_Fruit_Vegetables_Seafood dataset
+
+CREATE TABLE food_nutrition 
+( food_name VARCHAR2(255), 
+calories NUMBER, 
+calories_from_fat NUMBER,
+total_fat NUMBER, 
+total_fat_percentage NUMBER,
+sodium NUMBER,
+sodium_percentage NUMBER,
+potassium NUMBER, 
+potassium_percentage NUMBER,
+total_carbohydrate NUMBER,
+total_carbohydrate_percentage NUMBER, 
+dietary_fiber NUMBER,
+dietary_fiber_percentage NUMBER,
+sugars NUMBER, protein NUMBER,
+vitamin_a NUMBER, 
+vitamin_c NUMBER,
+calcium NUMBER,
+iron NUMBER,
+saturated_fat NUMBER,
+saturated_fat_percentage NUMBER,
+cholesterol NUMBER,
+cholesterol_percentage NUMBER, 
+food_type VARCHAR2(100) );
+
+INSERT INTO food_nutrition (
+    food_name, calories, calories_from_fat, total_fat, total_fat_percentage,
+    sodium, sodium_percentage, potassium, potassium_percentage,
+    total_carbohydrate, total_carbohydrate_percentage,
+    dietary_fiber, dietary_fiber_percentage, sugars, protein,
+    vitamin_a, vitamin_c, calcium, iron,
+    saturated_fat, saturated_fat_percentage, cholesterol, cholesterol_percentage,
+    food_type
+) VALUES
+-- Fruits
+('Apple (1 medium)', 95, 3, 0.3, 0, 2, 0, 195, 4, 25, 8, 4.4, 16, 19, 0.5, 1, 14, 11, 0.2, 0.1, 0, 0, 'Fruit'),
+('Banana (1 medium)', 105, 4, 0.4, 1, 1, 0, 422, 12, 27, 9, 3.1, 12, 14, 1.3, 2, 17, 6, 0.3, 0.1, 0, 0, 'Fruit'),
+('Orange (1 medium)', 62, 0, 0.2, 0, 0, 0, 237, 7, 15, 5, 3.1, 12, 12, 1.2, 6, 116, 5, 0.1, 0, 0, 0, 'Fruit'),
+('Mango (1 cup)', 99, 3, 0.6, 1, 2, 0, 277, 8, 25, 8, 2.6, 10, 23, 1.4, 10, 67, 2, 0.1, 0.1, 0, 0, 'Fruit'),
+('Strawberries (1 cup)', 49, 4, 0.5, 1, 1, 0, 233, 7, 12, 4, 3.0, 12, 7, 1.0, 0, 149, 2, 0.5, 0, 0, 0, 'Fruit'),
+
+-- Vegetables
+('Broccoli (1 cup)', 55, 5, 0.6, 1, 30, 1, 457, 13, 11, 4, 5.1, 20, 2, 4.7, 12, 135, 4, 0.7, 0.1, 0, 0, 'Vegetable'),
+('Carrots (1 cup)', 52, 3, 0.3, 0, 88, 4, 410, 12, 12, 4, 3.6, 14, 6, 1.2, 428, 13, 4, 0.3, 0.1, 0, 0, 'Vegetable'),
+('Spinach (1 cup)', 23, 1, 0.4, 1, 79, 3, 558, 16, 4, 1, 2.2, 9, 0.4, 2.9, 56, 14, 10, 2.7, 0.1, 0, 0, 0, 'Vegetable'),
+('Potato (1 medium)', 163, 3, 0.2, 0, 13, 0, 897, 26, 37, 12, 4.7, 18, 2, 4.3, 0, 28, 2, 1.1, 0.1, 0, 0, 'Vegetable'),
+('Tomato (1 medium)', 22, 2, 0.3, 0, 6, 0, 292, 8, 5, 2, 1.5, 6, 3, 1.1, 20, 40, 2, 0.3, 0.1, 0, 0, 'Vegetable'),
+
+-- Seafood
+('Salmon (100g)', 206, 108, 13, 20, 59, 2, 363, 10, 0, 0, 0, 0, 20, 22, 2, 6, 9, 0.5, 3, 15, 71, 'Seafood'),
+('Tuna (100g)', 132, 3, 1, 2, 47, 2, 252, 7, 0, 0, 0, 0, 0, 28, 2, 6, 4, 1.3, 0.2, 0, 0, 'Seafood'),
+('Shrimp (100g)', 99, 13, 1.5, 2, 111, 5, 264, 8, 1, 0, 0, 0, 0, 24, 2, 0, 7, 2, 0.3, 0.5, 18, 6, 'Seafood'),
+('Cod (100g)', 82, 7, 0.7, 1, 54, 2, 413, 12, 0, 0, 0, 0, 0, 18, 1, 2, 11, 0.3, 0.1, 0, 0, 'Seafood'),
+('Lobster (100g)', 89, 9, 1, 2, 320, 13, 230, 7, 0, 0, 0, 0, 0, 19, 3, 0, 7, 0.1, 0.2, 0, 0, 'Seafood');
+
+-- 1. Retrieve the food items with the highest calorie content per serving
+SELECT food_name, calories 
+FROM food_nutrition
+WHERE calories = (SELECT MAX(calories) FROM food_nutrition);
+
+-- 2. Find the total number of unique food types in the dataset
+SELECT COUNT(DISTINCT food_type) AS unique_food_types 
+FROM food_nutrition;
+
+-- 3. Calculate the average sodium content per serving for all food items
+SELECT AVG(sodium) AS avg_sodium 
+FROM food_nutrition;
+
+-- 4. List the food items that have more than 20% of the daily recommended value for saturated fat
+SELECT food_name, saturated_fat_percentage 
+FROM food_nutrition
+WHERE saturated_fat_percentage > 20;
+
+-- 5. Retrieve the top 10 food items with the highest protein content
+SELECT food_name, protein 
+FROM food_nutrition
+ORDER BY protein DESC
+FETCH FIRST 10 ROWS ONLY;
+
+-- 6. Find the food items with the highest potassium content per serving among those with more than 10g of total carbohydrates
+SELECT food_name, potassium, total_carbohydrate 
+FROM food_nutrition
+WHERE total_carbohydrate > 10
+ORDER BY potassium DESC;
+
+-- 7. Calculate the total number of calories in the dataset and the percentage of calories contributed by sugars
+SELECT 
+    SUM(calories) AS total_calories,
+    (SUM(sugars) / SUM(calories)) * 100 AS sugar_percentage_of_calories
+FROM food_nutrition;
+
+-- 8. List the food items with more than 5g of dietary fibre and order them by their fibre content
+SELECT food_name, dietary_fiber 
+FROM food_nutrition
+WHERE dietary_fiber > 5
+ORDER BY dietary_fiber DESC;
+
+-- 9. Retrieve the food items where the calories from fat are more than 30% of the total calories
+SELECT food_name, calories_from_fat, calories 
+FROM food_nutrition
+WHERE (calories_from_fat / calories) > 0.3;
+
+-- 10. Calculate the average percentage of daily recommended vitamin A for all food items
+SELECT AVG(vitamin_a) AS avg_vitamin_a 
+FROM food_nutrition;
+
+-- 11. Find the food items with the highest calcium content per serving among those classified as a certain food type
+SELECT food_name, calcium 
+FROM food_nutrition
+WHERE food_type = 'Fruit'   -- <-- Replace with the desired type
+ORDER BY calcium DESC 
+FETCH FIRST 1 ROWS ONLY;
+
+-- 12. List the top 5 food types with the highest average sodium content per serving
+SELECT food_type, AVG(sodium) AS avg_sodium 
+FROM food_nutrition
+GROUP BY food_type
+ORDER BY avg_sodium DESC 
+FETCH FIRST 5 ROWS ONLY;
+
+-- 13. Calculate the total number of food items in each food type and order them by the count
+SELECT food_type, COUNT(*) AS total_fooditems 
+FROM food_nutrition
+GROUP BY food_type
+ORDER BY total_fooditems DESC;
+
+-- 14. Retrieve the food item where the ratio of calories to protein is the highest
+SELECT food_name, calories, protein, (calories / protein) AS calories_to_protein_ratio
+FROM food_nutrition
+WHERE protein > 0
+ORDER BY calories_to_protein_ratio DESC 
+FETCH FIRST 1 ROWS ONLY;
+
+-- 15. Find the food items with the lowest ratio of calories to total carbohydrates among those with less than 10g of sugar
+SELECT food_name, calories, total_carbohydrate, sugars, 
+       (calories / total_carbohydrate) AS calories_to_carbs_ratio
+FROM food_nutrition
+WHERE sugars < 10 AND total_carbohydrate > 0
+ORDER BY calories_to_carbs_ratio ASC 
+FETCH FIRST 1 ROWS ONLY;
+
